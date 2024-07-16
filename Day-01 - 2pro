@@ -1,0 +1,38 @@
+Q1---> FIND DUPLICATE NUMBER
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int max=Integer.MIN_VALUE;
+        int thissum=0;
+        int n=nums.length;
+
+        for(int i=0;i<nums.length;i++){
+            thissum+=nums[i];
+            max=Math.max(max,nums[i]);
+        }
+
+        int actual=(max*(max+1))/2;
+
+        if(thissum/n==max){
+            return max;
+        }
+
+        return Math.abs(actual-thissum);
+    }
+}
+
+Q2---> REMOVE DUPLICATES FROM ARRAY IN-PLACE
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+       int j=1;
+       for(int i=1;i<nums.length;i++){
+           if(nums[i]!=nums[i-1]){
+               nums[j]=nums[i];
+               j++;
+           }
+       }
+
+       return j;
+    }
+}
